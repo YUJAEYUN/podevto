@@ -125,7 +125,7 @@ dbeaver/
 ├── features/             # Eclipse Feature 정의
 ├── product/              # 제품 빌드 설정
 │   ├── community/        # 커뮤니티 에디션
-│   ├── repositories/     # P2 저장소
+│   ├── repositories/     # P2 저장소(P2는 프로비저닝의 약자)
 │   └── appstore/         # 앱스토어 버전
 ├── test/                 # 테스트 코드
 ├── docs/                 # 문서 및 라이선스
