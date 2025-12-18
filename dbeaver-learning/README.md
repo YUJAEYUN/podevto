@@ -18,7 +18,7 @@ dbeaver-learning/
 - DBeaver의 내부 구조와 구현 방식 이해
 - 100+ 데이터베이스를 지원하는 아키텍처 분석
 - 다른 DB 관리 툴(DataGrip, SQL Developer 등)과의 차이점 파악
-- Eclipse RCP와 OSGi 플러그인 시스템이 어떻게 활용되는지 학습
+- Eclipse RCP와 OSGi 플러그인 시스템이 어떻게 활용되는지 학습(RCP는 클라이언트 프레임워크, OSGI는 동적 모듈 시스템)
 - 실제 사용해온 기능들이 코드 레벨에서 어떻게 구현되어 있는지 확인
 
 ## 📚 주요 문서
