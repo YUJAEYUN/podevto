@@ -1,0 +1,15 @@
+# DBeaver 클론된 저장소 제외
+dbeaver/
+
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Build
+target/
+build/
+dist/
