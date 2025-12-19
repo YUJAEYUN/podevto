@@ -200,7 +200,7 @@ plugins/
 │  │  (DBP/DBC)  │  (JSQLParser)   │  │
 │  └─────────────┴─────────────────┘  │
 ├─────────────────────────────────────┤
-│      Data Access Layer (JDBC)       │
+│      Data Access Layer (JDBC:Java Database Connectivity. 쉽게 말해서 데이터베이스에 접근할 수 있는 자발로 작성된 api)       │
 │  ┌────────┬────────┬──────────────┐ │
 │  │MySQL   │PG      │Oracle  ...   │ │
 │  └────────┴────────┴──────────────┘ │
