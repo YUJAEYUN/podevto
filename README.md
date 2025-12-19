@@ -4,6 +4,12 @@
 
 ## 📚 프로젝트
 
+### Context7 학습
+- [context7-learning/](context7-learning/) - Context7 MCP 서버 오픈소스 분석
+  - MCP 프로토콜 이해
+  - 아키텍처 분석
+  - 코드 구현체 분석
+
 ### DBeaver 학습
 - [dbeaver-learning/](dbeaver-learning/) - DBeaver 오픈소스 프로젝트 학습 자료
   - 아키텍처 분석
@@ -20,12 +26,16 @@
 
 ```
 podevto/
+├── context7-learning/    # Context7 학습 자료
+│   ├── LEARNING_GUIDE.md
+│   ├── notes/
+│   └── code-examples/
+├── context7/             # Context7 포크 저장소 (gitignore)
 ├── dbeaver-learning/     # DBeaver 학습 자료
 │   ├── LEARNING_GUIDE.md
 │   ├── notes/
 │   ├── code-examples/
 │   └── resources/
-├── dbeaver/              # DBeaver 포크 저장소 (gitignore)
 └── README.md
 ```
 

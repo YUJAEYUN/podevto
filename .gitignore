@@ -1,5 +1,6 @@
-# DBeaver 클론된 저장소 제외
+# 클론된 저장소 제외
 dbeaver/
+context7/
 
 # macOS
 .DS_Store
