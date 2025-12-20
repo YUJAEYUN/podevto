@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "context7-learning/notes/architecture.md",
+                "file": "multimodal-ai-learning/LEARNING_GUIDE.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "architecture"
+              "title": "LEARNING_GUIDE"
             }
           }
         ]
@@ -183,13 +183,27 @@
   },
   "active": "cf3536effc4d82e0",
   "lastOpenFiles": [
+    "multimodal-ai-learning/resources/useful-links.md",
+    "multimodal-ai-learning/resources/papers.md",
+    "multimodal-ai-learning/code-examples/clip-architecture.md",
+    "multimodal-ai-learning/code-examples/vit-patch-embedding.md",
+    "multimodal-ai-learning/notes/latest-research.md",
+    "multimodal-ai-learning/notes/vision-language-models.md",
+    "README.md",
+    "multimodal-ai-learning/notes/clip-contrastive-learning.md",
+    "multimodal-ai-learning/notes/vision-transformer.md",
+    "multimodal-ai-learning/LEARNING_GUIDE.md",
+    "multimodal-ai-learning/resources",
+    "multimodal-ai-learning/notes",
+    "multimodal-ai-learning/code-examples",
+    "multimodal-ai-learning",
+    "context7-learning/code-examples/sdk-usage.md",
+    "context7-learning/code-examples/mcp-server-structure.md",
+    "context7-learning/notes/architecture.md",
     "context7-learning/notes/zod-schema.md",
     "context7-learning/notes/mcp-protocol.md",
-    "context7-learning/notes/architecture.md",
-    "context7-learning/code-examples/mcp-server-structure.md",
+    "context7-learning/notes/ecosystem.md",
     "context7-learning/LEARNING_GUIDE.md",
-    "context7-learning/code-examples/sdk-usage.md",
-    "README.md",
     "Welcome.md"
   ]
 }
