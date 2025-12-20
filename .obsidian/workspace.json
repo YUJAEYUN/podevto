@@ -13,28 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "context7-learning/notes/architecture.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
-            }
-          }
-        ]
-      },
-      {
-        "id": "a89d7bde020e6487",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "a24251c465395f1b",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "title": "architecture"
             }
           }
         ]
@@ -197,8 +181,15 @@
       "bases:Create new base": false
     }
   },
-  "active": "c3a593a6a43b90dd",
+  "active": "cf3536effc4d82e0",
   "lastOpenFiles": [
+    "context7-learning/notes/zod-schema.md",
+    "context7-learning/notes/mcp-protocol.md",
+    "context7-learning/notes/architecture.md",
+    "context7-learning/code-examples/mcp-server-structure.md",
+    "context7-learning/LEARNING_GUIDE.md",
+    "context7-learning/code-examples/sdk-usage.md",
+    "README.md",
     "Welcome.md"
   ]
 }
