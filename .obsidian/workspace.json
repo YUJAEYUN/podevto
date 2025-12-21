@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "multimodal-ai-learning/notes/clip-contrastive-learning.md",
+                "file": "backend-learning/06-web-servers/notes/web-server-basics.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "clip-contrastive-learning"
+              "title": "web-server-basics"
             }
           }
         ]
@@ -183,6 +183,10 @@
   },
   "active": "cf3536effc4d82e0",
   "lastOpenFiles": [
+    "backend-learning/06-web-servers/notes/nginx-guide.md",
+    "backend-learning/03-database/notes/n-plus-1-query-problem.md",
+    "backend-learning/06-web-servers/notes/web-server-basics.md",
+    "multimodal-ai-learning/notes/clip-contrastive-learning.md",
     "multimodal-ai-learning/LEARNING_GUIDE.md",
     "multimodal-ai-learning/notes/vision-language-models.md",
     "multimodal-ai-learning/notes/vision-transformer.md",
@@ -192,7 +196,6 @@
     "multimodal-ai-learning/code-examples/vit-patch-embedding.md",
     "multimodal-ai-learning/notes/latest-research.md",
     "README.md",
-    "multimodal-ai-learning/notes/clip-contrastive-learning.md",
     "multimodal-ai-learning/resources",
     "multimodal-ai-learning/notes",
     "multimodal-ai-learning/code-examples",
