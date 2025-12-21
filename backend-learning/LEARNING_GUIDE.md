@@ -158,15 +158,19 @@
 학습 내용:
 ─────────────────────────────────────────
 • 웹 서버 동작 원리 ✅
+• 웹 서버 vs WAS ✅
 • Nginx 아키텍처 ✅
-• 리버스 프록시
-• 로드 밸런싱
-• SSL/TLS 설정
+• 리버스 프록시 ✅
+• 로드 밸런싱 ✅
+• SSL/TLS 종료 ✅
+• HTTPS/TLS 핸드셰이크 ✅
+• 인증서와 CA ✅
 ```
 
 **현재 노트:**
-- [웹 서버 동작 원리](06-web-servers/notes/web-server-basics.md) ✅
-- [Nginx 완벽 가이드](06-web-servers/notes/nginx-guide.md) ✅
+- [웹 서버 동작 원리](06-web-servers/notes/web-server-basics.md) ✅ - HTTP 처리, 웹서버 vs WAS, 배포 패턴
+- [Nginx 완벽 가이드](06-web-servers/notes/nginx-guide.md) ✅ - 아키텍처, 설정, 로드밸런싱, SSL 종료
+- [HTTPS/SSL/TLS 가이드](06-web-servers/notes/https-ssl-tls-guide.md) ✅ - 암호화, 핸드셰이크, 인증서
 
 ### 07. 인증/인가
 ```

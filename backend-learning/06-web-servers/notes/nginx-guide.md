@@ -289,33 +289,63 @@ server {
 | `ip_hash` | 클라이언트 IP 기반 (세션 유지) |
 | `hash` | 커스텀 키 기반 해싱 |
 
-### 4. SSL/TLS 설정
+### 4. SSL/TLS 설정 (SSL 종료)
+
+```
+SSL 종료 (SSL Termination) 개념:
+─────────────────────────────────────────
+Nginx가 HTTPS 암호화/복호화를 담당하고,
+내부 WAS에는 평문 HTTP로 전달하는 구조
+
+외부 (인터넷)              내부 (서버)
+     │                        │
+┌────▼────┐   HTTPS    ┌──────▼──────┐   HTTP    ┌─────────┐
+│ 브라우저 │ ─────────▶ │   Nginx     │ ────────▶ │  WAS    │
+└─────────┘   암호화    │ (SSL 종료)  │   평문    │ :3000   │
+                        └─────────────┘           └─────────┘
+
+장점:
+• WAS 부담 감소 (암호화는 CPU 집약적)
+• 인증서를 Nginx에서만 관리
+• WAS가 여러 대여도 인증서는 한 곳에서
+```
 
 ```nginx
 server {
     listen 443 ssl http2;
-    server_name example.com;
+    server_name api.example.com;
 
-    # SSL 인증서
+    # SSL 인증서 (Let's Encrypt)
     ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
 
-    # 보안 설정
+    # TLS 버전 (1.2, 1.3만 허용 - SSL은 취약해서 제외)
     ssl_protocols TLSv1.2 TLSv1.3;
     ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256;
     ssl_prefer_server_ciphers off;
 
-    # HSTS
+    # HSTS - 브라우저가 항상 HTTPS로 접속하도록 강제
     add_header Strict-Transport-Security "max-age=63072000" always;
+
+    # 백엔드로 프록시 (내부망이라 평문 HTTP)
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;  # WAS에게 원본이 HTTPS임을 알림
+    }
 }
 
 # HTTP → HTTPS 리다이렉트
 server {
     listen 80;
-    server_name example.com;
+    server_name api.example.com;
     return 301 https://$server_name$request_uri;
 }
 ```
+
+> 💡 자세한 TLS 핸드셰이크, 인증서, 암호화 원리는 [HTTPS/SSL/TLS 가이드](https-ssl-tls-guide.md) 참고
 
 ### 5. Gzip 압축
 
@@ -494,12 +524,20 @@ http {
 
 ---
 
+## 관련 노트
+
+- [웹 서버 동작 원리](web-server-basics.md) - HTTP 처리 과정, 웹서버 vs WAS
+- [HTTPS/SSL/TLS 완벽 가이드](https-ssl-tls-guide.md) - 암호화, 인증서, 핸드셰이크
+
+---
+
 ## 참고 자료
 
 - [Inside NGINX: How We Designed for Performance & Scale | NGINX Blog](https://blog.nginx.org/blog/inside-nginx-how-we-designed-for-performance-scale)
 - [Understanding NGINX: Architecture & Alternatives | Solo.io](https://www.solo.io/topics/nginx)
 - [The Architecture of Open Source Applications: nginx](https://aosabook.org/en/v2/nginx.html)
 - [NGINX Documentation](https://nginx.org/en/docs/)
+- [Nginx란? 필요성, 구조, 동작원리 | Velog](https://velog.io/@gusbms0627/nginx-란-필요성-구조-동작원리)
 
 ---
 
