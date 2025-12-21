@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "multimodal-ai-learning/LEARNING_GUIDE.md",
+                "file": "multimodal-ai-learning/notes/clip-contrastive-learning.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "LEARNING_GUIDE"
+              "title": "clip-contrastive-learning"
             }
           }
         ]
@@ -183,16 +183,16 @@
   },
   "active": "cf3536effc4d82e0",
   "lastOpenFiles": [
+    "multimodal-ai-learning/LEARNING_GUIDE.md",
+    "multimodal-ai-learning/notes/vision-language-models.md",
+    "multimodal-ai-learning/notes/vision-transformer.md",
     "multimodal-ai-learning/resources/useful-links.md",
     "multimodal-ai-learning/resources/papers.md",
     "multimodal-ai-learning/code-examples/clip-architecture.md",
     "multimodal-ai-learning/code-examples/vit-patch-embedding.md",
     "multimodal-ai-learning/notes/latest-research.md",
-    "multimodal-ai-learning/notes/vision-language-models.md",
     "README.md",
     "multimodal-ai-learning/notes/clip-contrastive-learning.md",
-    "multimodal-ai-learning/notes/vision-transformer.md",
-    "multimodal-ai-learning/LEARNING_GUIDE.md",
     "multimodal-ai-learning/resources",
     "multimodal-ai-learning/notes",
     "multimodal-ai-learning/code-examples",

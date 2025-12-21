@@ -70,11 +70,11 @@
 
 ### 인코더 상세
 
-| 구성 요소 | 구현 | 출력 |
-|-----------|------|------|
-| **Image Encoder** | ViT-L/14 (336px) 또는 ResNet-50x64 | 이미지 임베딩 벡터 |
-| **Text Encoder** | 12-layer Transformer (GPT-2 스타일) | 텍스트 임베딩 벡터 |
-| **Projection** | Linear Layer | 512차원 공유 공간 |
+| 구성 요소             | 구현                               | 출력          |
+| ----------------- | -------------------------------- | ----------- |
+| **Image Encoder** | ViT-L/14 (336px) 또는 ResNet-50x64 | 이미지 임베딩 벡터  |
+| **Text Encoder**  | 12-layer Transformer (GPT-2 스타일) | 텍스트 임베딩 벡터  |
+| **Projection**    | Linear Layer                     | 512차원 공유 공간 |
 
 ---
 
