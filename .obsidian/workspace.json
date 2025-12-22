@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "backend-learning/06-web-servers/notes/web-server-basics.md",
+                "file": "backend-learning/16-mcp-server/notes/mcp-server-implementation.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "web-server-basics"
+              "title": "mcp-server-implementation"
             }
           }
         ]
@@ -183,10 +183,13 @@
   },
   "active": "cf3536effc4d82e0",
   "lastOpenFiles": [
+    "backend-learning/LEARNING_GUIDE.md",
+    "backend-learning/16-mcp-server/notes/mcp-server-implementation.md",
+    "backend-learning/16-mcp-server/notes/mcp-fundamentals.md",
+    "backend-learning/06-web-servers/notes/web-server-basics.md",
     "backend-learning/06-web-servers/notes/https-ssl-tls-guide.md",
     "backend-learning/06-web-servers/notes/nginx-guide.md",
     "backend-learning/03-database/notes/n-plus-1-query-problem.md",
-    "backend-learning/06-web-servers/notes/web-server-basics.md",
     "multimodal-ai-learning/notes/clip-contrastive-learning.md",
     "multimodal-ai-learning/LEARNING_GUIDE.md",
     "multimodal-ai-learning/notes/vision-language-models.md",
