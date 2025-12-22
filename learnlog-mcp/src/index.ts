@@ -7,7 +7,7 @@ import * as fs from "fs";
 import * as path from "path";
 import { homedir } from "os";
 
-const DATA_DIR = path.join(homedir(), "recall-learning");
+const DATA_DIR = path.join(homedir(), "learnlog");
 const PROMPTS_DIR = path.join(DATA_DIR, "prompts");
 
 function ensureDirectories() {
@@ -51,7 +51,7 @@ function savePrompt(date: string, prompt: string): void {
 }
 
 const server = new McpServer({
-  name: "recall-mcp",
+  name: "learnlog-mcp",
   version: "1.0.0",
 });
 
@@ -169,11 +169,11 @@ async function main() {
   ensureDirectories();
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error("[Recall MCP] 서버 시작");
-  console.error(`[Recall MCP] 저장 위치: ${DATA_DIR}`);
+  console.error("[LearnLog] 서버 시작");
+  console.error(`[LearnLog] 저장 위치: ${DATA_DIR}`);
 }
 
 main().catch((error) => {
-  console.error("[Recall MCP] 오류:", error);
+  console.error("[LearnLog] 오류:", error);
   process.exit(1);
 });
