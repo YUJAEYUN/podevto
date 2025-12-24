@@ -4,7 +4,7 @@
 
 ## 학습 자료
 
-### Notes (개념 정리)
+### Notes (개념 정리) 
 - [Vision Transformer (ViT) 이해하기](notes/vision-transformer.md) - 이미지를 패치로 변환하여 처리하는 핵심 원리
 - [CLIP과 대조학습](notes/clip-contrastive-learning.md) - 이미지-텍스트 정렬의 핵심 메커니즘
 - [Vision Language Models (VLM)](notes/vision-language-models.md) - VLM 아키텍처와 동작 원리
