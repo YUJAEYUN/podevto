@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "multimodal-ai-learning/notes/vision-transformer.md",
+                "file": "other/개발자 방향성 생각.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "vision-transformer"
+              "title": "개발자 방향성 생각"
             }
           }
         ]
@@ -183,6 +183,16 @@
   },
   "active": "c3a593a6a43b90dd",
   "lastOpenFiles": [
+    "other/자기소개_베이스문서.md",
+    "other/스마트뉴비 딥테크 선정 회고.md",
+    "other/스마트뉴비 입사 2개월 회고.md",
+    "other/스마트뉴비의 1년 회고.md",
+    "other/Reply.pdf",
+    "other/개발자 방향성 생각.md",
+    "other/스마트뉴비 딥테크 선정 회고",
+    "other/퇴사.md",
+    "multimodal-ai-learning/notes/vision-transformer.md",
+    "other/smartnewbie",
     "other",
     "multimodal-ai-learning/LEARNING_GUIDE.md",
     "backend-learning/16-mcp-server/notes/mcp-server-implementation.md",
@@ -192,10 +202,6 @@
     "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/types/node_modules/zod/v4/locales/zh-TW.cjs",
     "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/types/node_modules/zod/v4/locales/zh-CN.js",
     "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/types/node_modules/zod/v4/locales/zh-CN.d.ts",
-    "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/types/node_modules/zod/v4/locales/zh-CN.d.cts",
-    "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/types/node_modules/zod/v4/locales/zh-CN.cjs",
-    "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/types/node_modules/zod/v4/locales/yo.js",
-    "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/types/node_modules/zod/v4/locales/yo.d.ts",
     "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/types/node_modules/zod/README.md",
     "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/esm/node_modules/zod/README.md",
     "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/cjs/node_modules/zod/README.md",
@@ -212,12 +218,6 @@
     "learnlog-mcp/node_modules/zod/README.md",
     "learnlog-mcp/node_modules/which/README.md",
     "learnlog-mcp/node_modules/which/CHANGELOG.md",
-    "learnlog-mcp/node_modules/wrappy/README.md",
-    "learnlog-mcp/node_modules/vary/README.md",
-    "learnlog-mcp/node_modules/vary/HISTORY.md",
-    "learnlog-mcp/node_modules/unpipe/README.md",
-    "learnlog-mcp/node_modules/unpipe/HISTORY.md",
-    "learnlog-mcp/node_modules/typescript/SECURITY.md",
-    "learnlog-mcp/node_modules/typescript/README.md"
+    "learnlog-mcp/node_modules/wrappy/README.md"
   ]
 }
