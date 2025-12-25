@@ -181,8 +181,9 @@
       "bases:Create new base": false
     }
   },
-  "active": "cf3536effc4d82e0",
+  "active": "c3a593a6a43b90dd",
   "lastOpenFiles": [
+    "other",
     "multimodal-ai-learning/LEARNING_GUIDE.md",
     "backend-learning/16-mcp-server/notes/mcp-server-implementation.md",
     "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/types/node_modules/zod/v4/locales/zh-TW.js",
@@ -217,7 +218,6 @@
     "learnlog-mcp/node_modules/unpipe/README.md",
     "learnlog-mcp/node_modules/unpipe/HISTORY.md",
     "learnlog-mcp/node_modules/typescript/SECURITY.md",
-    "learnlog-mcp/node_modules/typescript/README.md",
-    "learnlog-mcp/node_modules/type-is/README.md"
+    "learnlog-mcp/node_modules/typescript/README.md"
   ]
 }

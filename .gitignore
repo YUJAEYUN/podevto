@@ -17,3 +17,6 @@ dist/
 
 # node_modules
 node_modules/
+
+# 기타 메모장
+other/
