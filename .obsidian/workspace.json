@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "multimodal-ai-learning/resources/useful-links.md",
+                "file": "multimodal-ai-learning/code-examples/clip-architecture.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "useful-links"
+              "title": "clip-architecture"
             }
           }
         ]
@@ -183,27 +183,28 @@
   },
   "active": "cf3536effc4d82e0",
   "lastOpenFiles": [
-    "multimodal-ai-learning/resources/papers.md",
     "multimodal-ai-learning/code-examples/vit-patch-embedding.md",
-    "multimodal-ai-learning/code-examples/clip-architecture.md",
     "multimodal-ai-learning/notes/clip-contrastive-learning.md",
-    "multimodal-ai-learning/notes/latest-research.md",
-    "multimodal-ai-learning/notes/vision-language-models.md",
-    "multimodal-ai-learning/notes/vision-transformer.md",
+    "other/스마트뉴비 입사 2개월 회고.md",
+    "other/스마트뉴비 딥테크 선정 회고.md",
+    "other/개발자 방향성 생각.md",
+    "README.md",
     "multimodal-ai-learning/LEARNING_GUIDE.md",
     "multimodal-ai-learning/resources/useful-links.md",
+    "multimodal-ai-learning/resources/papers.md",
+    "multimodal-ai-learning/notes/vision-transformer.md",
+    "multimodal-ai-learning/notes/vision-language-models.md",
+    "multimodal-ai-learning/notes/latest-research.md",
+    "multimodal-ai-learning/code-examples/clip-architecture.md",
     "other/자기소개_베이스문서.md",
     "other/navercloud_resume.md",
     "other/Reply.pdf",
-    "other/개발자 방향성 생각.md",
     "other/스마트뉴비의 1년 회고.md",
-    "other/스마트뉴비 딥테크 선정 회고.md",
     "other/navercloud_resume_v5.md",
     "other/navercloud_resume_v4.md",
     "other/navercloud_resume_v3.md",
     "other/navercloud_resume_v2.md",
     "other/navercloud_",
-    "other/스마트뉴비 입사 2개월 회고.md",
     "other/스마트뉴비 딥테크 선정 회고",
     "other/퇴사.md",
     "other/smartnewbie",
@@ -217,7 +218,6 @@
     "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/types/node_modules/zod/README.md",
     "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/esm/node_modules/zod/README.md",
     "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/cjs/node_modules/zod/README.md",
-    "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v3/types/node_modules/zod/README.md",
-    "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v3/esm/node_modules/zod/README.md"
+    "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v3/types/node_modules/zod/README.md"
   ]
 }
