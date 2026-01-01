@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "multimodal-ai-learning/code-examples/clip-architecture.md",
+                "file": "other/면접.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "clip-architecture"
+              "title": "면접"
             }
           }
         ]
@@ -183,6 +183,7 @@
   },
   "active": "cf3536effc4d82e0",
   "lastOpenFiles": [
+    "multimodal-ai-learning/code-examples/clip-architecture.md",
     "multimodal-ai-learning/code-examples/vit-patch-embedding.md",
     "multimodal-ai-learning/notes/clip-contrastive-learning.md",
     "other/스마트뉴비 입사 2개월 회고.md",
@@ -195,7 +196,6 @@
     "multimodal-ai-learning/notes/vision-transformer.md",
     "multimodal-ai-learning/notes/vision-language-models.md",
     "multimodal-ai-learning/notes/latest-research.md",
-    "multimodal-ai-learning/code-examples/clip-architecture.md",
     "other/자기소개_베이스문서.md",
     "other/navercloud_resume.md",
     "other/Reply.pdf",
