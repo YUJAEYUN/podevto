@@ -183,6 +183,7 @@
   },
   "active": "cf3536effc4d82e0",
   "lastOpenFiles": [
+    "other/면접_질문모음.md",
     "other/navercloud_resume.md",
     "other/면접.md",
     "other/스마트뉴비 딥테크 선정 회고.md",
@@ -217,7 +218,6 @@
     "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/types/node_modules/zod/v4/locales/zh-TW.cjs",
     "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/types/node_modules/zod/v4/locales/zh-CN.js",
     "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/types/node_modules/zod/README.md",
-    "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/esm/node_modules/zod/README.md",
-    "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/cjs/node_modules/zod/README.md"
+    "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/esm/node_modules/zod/README.md"
   ]
 }
