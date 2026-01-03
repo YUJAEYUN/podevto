@@ -803,6 +803,7 @@ Autonomous Cloud는 단순한 기술이 아닌 **운영 철학의 변화**입니
 ---
 
 **다음 단계:**
+- [클라우드 인프라 기초 (EC2, ECS, ECR)](./cloud-infrastructure-basics.md) ✅
 - [클라우드 모니터링 심화](./cloud-monitoring-advanced.md)
 - [AIOps 실전 가이드](./aiops-practical-guide.md)
 - [Kubernetes 기반 자율 운영](./k8s-autonomous-operations.md)

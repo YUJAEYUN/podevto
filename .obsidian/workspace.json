@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "backend-learning/17-autonomous-cloud/notes/autonomous-cloud-fundamentals.md",
+                "file": "backend-learning/17-autonomous-cloud/notes/cloud-infrastructure-basics.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "autonomous-cloud-fundamentals"
+              "title": "cloud-infrastructure-basics"
             }
           }
         ]
@@ -183,8 +183,9 @@
   },
   "active": "cf3536effc4d82e0",
   "lastOpenFiles": [
-    "other/면접_질문모음.md",
     "backend-learning/17-autonomous-cloud/notes/autonomous-cloud-fundamentals.md",
+    "backend-learning/17-autonomous-cloud/notes/cloud-infrastructure-basics.md",
+    "other/면접_질문모음.md",
     "backend-learning/17-autonomous-cloud/resources",
     "backend-learning/17-autonomous-cloud/notes",
     "backend-learning/17-autonomous-cloud/code-examples",
@@ -217,7 +218,6 @@
     "other/smartnewbie",
     "other",
     "backend-learning/16-mcp-server/notes/mcp-server-implementation.md",
-    "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/types/node_modules/zod/v4/locales/zh-TW.js",
-    "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/types/node_modules/zod/README.md"
+    "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/types/node_modules/zod/v4/locales/zh-TW.js"
   ]
 }
