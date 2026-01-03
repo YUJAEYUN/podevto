@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "other/면접.md",
+                "file": "backend-learning/17-autonomous-cloud/notes/autonomous-cloud-fundamentals.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "면접"
+              "title": "autonomous-cloud-fundamentals"
             }
           }
         ]
@@ -184,20 +184,25 @@
   "active": "cf3536effc4d82e0",
   "lastOpenFiles": [
     "other/면접_질문모음.md",
-    "other/navercloud_resume.md",
+    "backend-learning/17-autonomous-cloud/notes/autonomous-cloud-fundamentals.md",
+    "backend-learning/17-autonomous-cloud/resources",
+    "backend-learning/17-autonomous-cloud/notes",
+    "backend-learning/17-autonomous-cloud/code-examples",
+    "backend-learning/17-autonomous-cloud",
     "other/면접.md",
+    "other/개발자 방향성 생각.md",
+    "other/navercloud_resume.md",
+    "multimodal-ai-learning/notes/clip-contrastive-learning.md",
+    "multimodal-ai-learning/notes/vision-language-models.md",
+    "multimodal-ai-learning/notes/vision-transformer.md",
     "other/스마트뉴비 딥테크 선정 회고.md",
     "multimodal-ai-learning/code-examples/clip-architecture.md",
     "multimodal-ai-learning/code-examples/vit-patch-embedding.md",
-    "multimodal-ai-learning/notes/clip-contrastive-learning.md",
     "other/스마트뉴비 입사 2개월 회고.md",
-    "other/개발자 방향성 생각.md",
     "README.md",
     "multimodal-ai-learning/LEARNING_GUIDE.md",
     "multimodal-ai-learning/resources/useful-links.md",
     "multimodal-ai-learning/resources/papers.md",
-    "multimodal-ai-learning/notes/vision-transformer.md",
-    "multimodal-ai-learning/notes/vision-language-models.md",
     "multimodal-ai-learning/notes/latest-research.md",
     "other/자기소개_베이스문서.md",
     "other/Reply.pdf",
@@ -213,11 +218,6 @@
     "other",
     "backend-learning/16-mcp-server/notes/mcp-server-implementation.md",
     "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/types/node_modules/zod/v4/locales/zh-TW.js",
-    "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/types/node_modules/zod/v4/locales/zh-TW.d.ts",
-    "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/types/node_modules/zod/v4/locales/zh-TW.d.cts",
-    "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/types/node_modules/zod/v4/locales/zh-TW.cjs",
-    "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/types/node_modules/zod/v4/locales/zh-CN.js",
-    "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/types/node_modules/zod/README.md",
-    "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/esm/node_modules/zod/README.md"
+    "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/types/node_modules/zod/README.md"
   ]
 }
