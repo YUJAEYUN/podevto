@@ -66,15 +66,15 @@ api.example.com
 
 일반적인 목적으로 사용되는 TLD입니다.
 
-| TLD | 용도 | 특징 |
-|-----|------|------|
-| `.com` | Commercial | 가장 인기 있는 TLD, 상업용 |
-| `.org` | Organization | 비영리 조직 |
-| `.net` | Network | 네트워크 관련 |
-| `.edu` | Education | 교육 기관 (제한적) |
-| `.gov` | Government | 정부 기관 (제한적) |
-| `.info` | Information | 정보 제공 사이트 |
-| `.biz` | Business | 비즈니스용 |
+| TLD     | 용도           | 특징                |
+| ------- | ------------ | ----------------- |
+| `.com`  | Commercial   | 가장 인기 있는 TLD, 상업용 |
+| `.org`  | Organization | 비영리 조직            |
+| `.net`  | Network      | 네트워크 관련           |
+| `.edu`  | Education    | 교육 기관 (제한적)       |
+| `.gov`  | Government   | 정부 기관 (제한적)       |
+| `.info` | Information  | 정보 제공 사이트         |
+| `.biz`  | Business     | 비즈니스용             |
 
 **개발자들이 선호하는 gTLD**:
 ```
