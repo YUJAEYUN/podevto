@@ -705,6 +705,635 @@ WHERE status = 'active';
 
 ---
 
+## B-트리에서 다양한 데이터 타입 처리
+
+### 정수는 쉽지만, 텍스트는?
+
+정수는 직관적으로 비교 가능하지만, 텍스트/UUID는 어떻게 B-트리에 저장될까요?
+
+```
+정수 비교 (간단)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+10 < 20 < 30 < 40
+   ↓
+       [20, 30]
+      /    |    \
+   [10]  [25]  [40]
+
+명확한 크기 비교!
+```
+
+### 1. 텍스트 (VARCHAR, TEXT) - 사전순 정렬
+
+```
+텍스트 비교 - Lexicographic Order (사전순)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+"Alice" < "Bob" < "Charlie" < "David"
+
+어떻게 비교?
+1. 첫 글자부터 ASCII/UTF-8 코드 비교
+2. 같으면 다음 글자 비교
+3. 다르면 그 위치에서 결정
+
+예:
+"Apple" vs "Banana"
+ A(65) < B(66)  → "Apple" < "Banana"
+
+"Apple" vs "Apricot"
+ A = A
+ p = p
+ p < r  → "Apple" < "Apricot"
+```
+
+**B-트리 구조 (이메일 인덱스)**:
+
+```sql
+CREATE INDEX idx_users_email ON users(email);
+```
+
+```
+이메일 B-트리
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+            ["m@example.com"]
+           /                  \
+  ["alice@example.com"]   ["tom@example.com"]
+  /          |          \
+["aaa@"]  ["bob@"]  ["charlie@"]
+
+검색: "bob@example.com"
+1. "bob@" < "m@" → 왼쪽
+2. "bob@" > "alice@" → 가운데 자식
+3. 찾음!
+```
+
+**실제 PostgreSQL 내부**:
+
+```
+텍스트 저장 방식
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+"Hello" 저장:
+[길이: 5] [H] [e] [l] [l] [o]
+   ↓
+바이트 배열: 05 48 65 6C 6C 6F
+
+비교 시:
+memcmp(str1, str2, min(len1, len2))
+→ C 언어의 메모리 비교 함수 사용
+```
+
+### 2. UUID - 16바이트 바이너리 비교
+
+```
+UUID 구조
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+550e8400-e29b-41d4-a716-446655440000
+    ↓
+128비트 (16바이트) 바이너리로 저장
+
+55 0e 84 00 e2 9b 41 d4 a7 16 44 66 55 44 00 00
+```
+
+**B-트리에서 UUID 비교**:
+
+```python
+# 의사 코드
+def compare_uuid(uuid1, uuid2):
+    # 16바이트를 바이트 단위로 비교
+    for i in range(16):
+        if uuid1[i] < uuid2[i]:
+            return -1  # uuid1이 작음
+        elif uuid1[i] > uuid2[i]:
+            return 1   # uuid1이 큼
+    return 0  # 같음
+
+# 예시
+uuid1 = "550e8400-..."  # 55 0e 84 00 ...
+uuid2 = "660e8400-..."  # 66 0e 84 00 ...
+        ↑
+     55 < 66 → uuid1 < uuid2
+```
+
+**UUID B-트리**:
+
+```
+UUID 인덱스
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+         [550e8400-e29b-41d4-...]
+        /                         \
+[123e4567-...]              [789abcde-...]
+
+→ 16바이트 바이너리를 사전순으로 정렬!
+```
+
+**UUID 버전별 차이**:
+
+```
+UUIDv4 (랜덤)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+550e8400-e29b-41d4-a716-446655440000
+123e4567-e89b-12d3-a456-426614174000
+789abcde-f012-3456-7890-123456789012
+
+문제:
+❌ 완전 무작위 → B-트리의 모든 위치에 삽입
+❌ 페이지 분할 빈번
+❌ 인덱스 파편화 증가
+
+UUIDv7 (시간 기반 - 2024년 신규 표준)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+018e1234-5678-7abc-def0-123456789012
+018e1234-9999-7abc-def0-123456789012
+018e1235-0000-7abc-def0-123456789012
+    ↑
+타임스탬프가 앞쪽 → 시간순 정렬!
+
+장점:
+✅ 순차적 삽입 → 항상 B-트리의 마지막에 추가
+✅ 페이지 분할 최소화
+✅ 인덱스 효율적
+```
+
+### 3. JSONB - 특수한 경우
+
+```sql
+CREATE INDEX idx_users_metadata ON users USING GIN (metadata);
+```
+
+```
+JSONB는 B-트리가 아닌 GIN 인덱스 사용!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+JSONB 데이터:
+{
+  "age": 30,
+  "city": "Seoul",
+  "tags": ["developer", "backend"]
+}
+
+GIN 인덱스 구조:
+"age" → [row1, row5, row10]
+"city" → [row1, row3, row8]
+"Seoul" → [row1, row6]
+"developer" → [row1, row2]
+
+→ 역인덱스(Inverted Index) 구조
+→ 텍스트 검색, 배열 검색에 최적화
+```
+
+---
+
+## 인덱스 크기와 정규화의 관계
+
+### 인덱스 크기란?
+
+```
+인덱스 크기 = 디스크에 저장되는 인덱스 데이터의 용량
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+인덱스는 별도의 파일로 저장됨:
+- 테이블 데이터: /var/lib/postgresql/data/base/16384/12345
+- 인덱스 데이터: /var/lib/postgresql/data/base/16384/12346
+
+인덱스 크기 = B-트리 노드들의 총합
+```
+
+### 인덱스 크기에 영향을 주는 요소
+
+```
+인덱스 크기 = (키 크기 + 포인터 크기) × 행 개수 × 오버헤드
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. 키 크기
+   - INT (4바이트)
+   - BIGINT (8바이트)
+   - VARCHAR(255) (가변 크기, 평균 20바이트)
+   - UUID (16바이트)
+
+2. 포인터 크기
+   - CTID (6바이트) - 실제 행 위치
+
+3. 행 개수
+   - 100만 행
+   - 1억 행
+
+4. 오버헤드
+   - B-트리 구조 메타데이터
+   - 페이지 헤더
+   - 약 30% 추가
+```
+
+### 실제 크기 비교
+
+```sql
+-- 100만 개 레코드
+CREATE TABLE users (
+    id INT,
+    email VARCHAR(255),
+    full_name VARCHAR(500),  -- 긴 컬럼!
+    age INT
+);
+
+-- 1. INT 인덱스
+CREATE INDEX idx_id ON users(id);
+-- 크기: (4 + 6) × 1,000,000 × 1.3 ≈ 13 MB
+
+-- 2. VARCHAR(255) 인덱스
+CREATE INDEX idx_email ON users(email);
+-- 평균 길이 20바이트라고 가정
+-- 크기: (20 + 6) × 1,000,000 × 1.3 ≈ 34 MB
+
+-- 3. VARCHAR(500) 인덱스 (긴 이름!)
+CREATE INDEX idx_full_name ON users(full_name);
+-- 평균 길이 50바이트라고 가정
+-- 크기: (50 + 6) × 1,000,000 × 1.3 ≈ 73 MB
+
+-- 4. 복합 인덱스
+CREATE INDEX idx_email_name ON users(email, full_name);
+-- 크기: (20 + 50 + 6) × 1,000,000 × 1.3 ≈ 99 MB
+```
+
+**실제 확인**:
+
+```sql
+SELECT
+    indexrelname AS index_name,
+    pg_size_pretty(pg_relation_size(indexrelid)) AS index_size
+FROM pg_stat_user_indexes
+WHERE schemaname = 'public';
+
+-- 결과
+index_name      | index_size
+----------------|------------
+idx_id          | 13 MB
+idx_email       | 34 MB
+idx_full_name   | 73 MB
+idx_email_name  | 99 MB
+```
+
+### 정규화와 인덱스 크기
+
+#### 비정규화된 테이블 (나쁜 예)
+
+```sql
+-- 비정규화: 모든 정보를 한 테이블에
+CREATE TABLE orders (
+    id SERIAL PRIMARY KEY,
+    -- 고객 정보 (중복!)
+    customer_name VARCHAR(100),
+    customer_email VARCHAR(255),
+    customer_address TEXT,  -- 길다!
+    customer_phone VARCHAR(20),
+    -- 상품 정보 (중복!)
+    product_name VARCHAR(255),
+    product_description TEXT,  -- 매우 길다!
+    product_category VARCHAR(100),
+    -- 주문 정보
+    quantity INT,
+    total_amount DECIMAL(10, 2),
+    created_at TIMESTAMP
+);
+
+-- 인덱스 생성
+CREATE INDEX idx_customer_email ON orders(customer_email);
+CREATE INDEX idx_product_name ON orders(product_name);
+CREATE INDEX idx_created_at ON orders(created_at);
+```
+
+**문제점**:
+
+```
+100만 개 주문 (같은 고객이 여러 번 주문)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+orders 테이블:
+┌────┬────────────────┬───────────────┬─────────┐
+│ id │ customer_email │ product_name  │ amount  │
+├────┼────────────────┼───────────────┼─────────┤
+│ 1  │ john@email.com │ Laptop A1000  │ 1000    │
+│ 2  │ john@email.com │ Mouse XYZ     │ 20      │  ← 이메일 중복!
+│ 3  │ john@email.com │ Keyboard Pro  │ 50      │  ← 이메일 중복!
+│ 4  │ jane@email.com │ Laptop A1000  │ 1000    │
+│ 5  │ jane@email.com │ Laptop A1000  │ 1000    │  ← 상품명 중복!
+└────┴────────────────┴───────────────┴─────────┘
+
+인덱스 크기:
+idx_customer_email: (20 + 6) × 1,000,000 × 1.3 = 34 MB
+idx_product_name:   (15 + 6) × 1,000,000 × 1.3 = 27 MB
+
+총 인덱스 크기: 61 MB
+
+문제:
+❌ 같은 이메일/상품명이 인덱스에 반복 저장
+❌ 인덱스가 불필요하게 큼
+❌ 메모리 낭비
+❌ 캐시 효율 감소
+```
+
+#### 정규화된 테이블 (좋은 예)
+
+```sql
+-- 정규화: 테이블 분리
+CREATE TABLE customers (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(255),
+    address TEXT,
+    phone VARCHAR(20)
+);
+
+CREATE TABLE products (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    description TEXT,
+    category VARCHAR(100)
+);
+
+CREATE TABLE orders (
+    id SERIAL PRIMARY KEY,
+    customer_id INT REFERENCES customers(id),
+    product_id INT REFERENCES products(id),
+    quantity INT,
+    total_amount DECIMAL(10, 2),
+    created_at TIMESTAMP
+);
+
+-- 인덱스 생성
+CREATE INDEX idx_customers_email ON customers(email);
+CREATE INDEX idx_products_name ON products(name);
+CREATE INDEX idx_orders_customer ON orders(customer_id);
+CREATE INDEX idx_orders_product ON orders(product_id);
+CREATE INDEX idx_orders_created ON orders(created_at);
+```
+
+**개선된 크기**:
+
+```
+100만 개 주문, 10만 명 고객, 1만 개 상품
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+customers (10만 행):
+idx_customers_email: (20 + 6) × 100,000 × 1.3 = 3.4 MB
+
+products (1만 행):
+idx_products_name: (15 + 6) × 10,000 × 1.3 = 0.27 MB
+
+orders (100만 행):
+idx_orders_customer: (4 + 6) × 1,000,000 × 1.3 = 13 MB
+idx_orders_product:  (4 + 6) × 1,000,000 × 1.3 = 13 MB
+idx_orders_created:  (8 + 6) × 1,000,000 × 1.3 = 18 MB
+
+총 인덱스 크기: 47.67 MB
+
+비교:
+비정규화: 61 MB
+정규화:   47.67 MB
+절약:     13.33 MB (22% 감소)
+
+→ 데이터가 많을수록 차이는 더 커짐!
+```
+
+### 인덱스 크기가 중요한 이유
+
+```
+1. 메모리 소비
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PostgreSQL은 자주 사용되는 인덱스를 메모리에 캐싱
+
+작은 인덱스:
+✅ 전체가 메모리에 로드 가능
+✅ 디스크 접근 최소화
+✅ 매우 빠른 검색
+
+큰 인덱스:
+❌ 일부만 메모리에 로드
+❌ 디스크 접근 빈번
+❌ 검색 속도 저하
+
+2. 쓰기 성능
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+INSERT/UPDATE/DELETE 시 인덱스도 갱신 필요
+
+작은 인덱스:
+✅ 빠른 갱신
+✅ 적은 페이지 분할
+
+큰 인덱스:
+❌ 느린 갱신
+❌ 빈번한 페이지 분할
+❌ 디스크 I/O 증가
+
+3. 백업/복구 시간
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+인덱스가 클수록:
+❌ 백업 시간 증가
+❌ 복구 시간 증가
+❌ 디스크 공간 부족 위험
+```
+
+### 실제 성능 영향
+
+```sql
+-- 테스트 시나리오
+-- 1억 개 레코드, 1000만 명 고객
+
+-- 비정규화
+CREATE TABLE orders_denorm (
+    id SERIAL PRIMARY KEY,
+    customer_email VARCHAR(255),  -- 중복 많음
+    customer_name VARCHAR(100),   -- 중복 많음
+    product_name VARCHAR(255),    -- 중복 많음
+    amount DECIMAL(10, 2)
+);
+
+CREATE INDEX idx_denorm_email ON orders_denorm(customer_email);
+-- 인덱스 크기: 3.4 GB
+-- 메모리 사용: 3.4 GB (메모리에 다 안 들어감!)
+
+-- 검색 성능
+SELECT * FROM orders_denorm WHERE customer_email = 'john@example.com';
+-- 실행 시간: 15ms (디스크 접근 발생)
+
+-- 정규화
+CREATE TABLE orders_norm (
+    id SERIAL PRIMARY KEY,
+    customer_id INT,
+    product_id INT,
+    amount DECIMAL(10, 2)
+);
+
+CREATE INDEX idx_norm_customer ON orders_norm(customer_id);
+-- 인덱스 크기: 1.3 GB
+-- 메모리 사용: 1.3 GB (메모리에 충분히 들어감!)
+
+-- 검색 성능
+SELECT * FROM orders_norm WHERE customer_id = 12345;
+-- 실행 시간: 0.5ms (메모리에서 직접 조회)
+
+→ 30배 빠름!
+```
+
+---
+
+## 인덱스 크기 최적화 전략
+
+### 1. 필요한 컬럼만 인덱스
+
+```sql
+-- ❌ 나쁜 예: 긴 텍스트 인덱스
+CREATE INDEX idx_article_content ON articles(content);
+-- content는 TEXT 타입 (평균 10KB)
+-- 100만 개 → 인덱스 크기 13 GB!
+
+-- ✅ 좋은 예: 전문 검색 인덱스
+CREATE INDEX idx_article_content_fts
+ON articles USING GIN (to_tsvector('english', content));
+-- GIN 인덱스는 단어별로 저장 (효율적)
+-- 크기: 약 500 MB
+```
+
+### 2. 부분 인덱스 (Partial Index)
+
+```sql
+-- ❌ 전체 인덱스
+CREATE INDEX idx_orders_status ON orders(status);
+-- 100만 개 모두 인덱싱
+
+-- ✅ 부분 인덱스
+CREATE INDEX idx_orders_pending ON orders(status)
+WHERE status = 'pending';
+-- pending인 주문만 인덱싱 (전체의 5%)
+-- 크기: 95% 감소!
+```
+
+### 3. 표현식 인덱스 크기 줄이기
+
+```sql
+-- ❌ 전체 이메일 인덱스
+CREATE INDEX idx_email ON users(email);
+-- 평균 20바이트
+
+-- ✅ 해시 인덱스 (검색만 필요한 경우)
+CREATE INDEX idx_email_hash ON users(MD5(email));
+-- MD5 해시: 고정 16바이트
+-- 크기 20% 감소!
+-- 단, 범위 검색 불가 (=만 가능)
+```
+
+### 4. 복합 인덱스 순서 최적화
+
+```sql
+-- ❌ 나쁜 순서
+CREATE INDEX idx_bad ON users(address, id);
+-- address: 평균 100바이트
+-- id: 4바이트
+-- 크기: (100 + 4) × N
+
+-- ✅ 좋은 순서
+CREATE INDEX idx_good ON users(id, address);
+-- 자주 사용하는 컬럼을 앞에
+-- 크기는 같지만, 사용 패턴에 따라 효율적
+```
+
+---
+
+## 실무 팁: 인덱스 크기 모니터링
+
+### 크기 확인
+
+```sql
+-- 테이블별 인덱스 크기
+SELECT
+    tablename,
+    indexname,
+    pg_size_pretty(pg_relation_size(indexrelid)) AS index_size,
+    idx_scan AS times_used
+FROM pg_stat_user_indexes
+ORDER BY pg_relation_size(indexrelid) DESC;
+
+-- 결과
+tablename | indexname          | index_size | times_used
+----------|--------------------|-----------|-----------
+orders    | idx_customer_email | 340 MB    | 1234567
+orders    | idx_product_name   | 270 MB    | 5678
+orders    | idx_unused         | 150 MB    | 0  ← 사용 안 됨!
+```
+
+### 불필요한 인덱스 제거
+
+```sql
+-- 사용되지 않는 큰 인덱스 찾기
+SELECT
+    schemaname,
+    tablename,
+    indexname,
+    idx_scan,
+    pg_size_pretty(pg_relation_size(indexrelid)) AS index_size
+FROM pg_stat_user_indexes
+WHERE idx_scan = 0  -- 한 번도 사용 안 됨
+  AND pg_relation_size(indexrelid) > 100 * 1024 * 1024  -- 100MB 이상
+ORDER BY pg_relation_size(indexrelid) DESC;
+
+-- 제거
+DROP INDEX idx_unused;
+-- 150 MB 절약!
+```
+
+---
+
+## 요약
+
+### 데이터 타입별 B-트리 처리
+
+```
+정수 (INT, BIGINT):
+→ 숫자 비교 (직관적)
+
+텍스트 (VARCHAR, TEXT):
+→ 바이트 단위 사전순 비교 (memcmp)
+
+UUID:
+→ 16바이트 바이너리 비교
+→ UUIDv7 권장 (시간순 정렬)
+
+날짜/시간:
+→ 내부적으로 숫자 (타임스탬프)
+
+JSONB:
+→ B-트리가 아닌 GIN 인덱스 사용
+```
+
+### 정규화와 인덱스 크기
+
+```
+비정규화:
+❌ 중복 데이터 → 인덱스 비대화
+❌ 큰 인덱스 → 메모리 부족
+❌ 디스크 접근 증가 → 느린 검색
+
+정규화:
+✅ 중복 제거 → 작은 인덱스
+✅ 메모리 캐싱 가능 → 빠른 검색
+✅ 적은 디스크 I/O → 빠른 쓰기
+```
+
+### 인덱스 크기 최적화
+
+```
+1. 짧은 키 사용
+2. 부분 인덱스 활용
+3. 복합 인덱스 순서 고려
+4. 불필요한 인덱스 제거
+5. 정규화 유지
+```
+
+---
+
 ## 추가 학습 자료
 
 - [B-Tree Visualization](https://www.cs.usfca.edu/~galles/visualization/BTree.html)

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "backend-learning/00-internet-basics/notes/https-security.md",
+                "file": "other/면접.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "https-security"
+              "title": "면접"
             }
           }
         ]
@@ -183,6 +183,7 @@
   },
   "active": "cf3536effc4d82e0",
   "lastOpenFiles": [
+    "backend-learning/00-internet-basics/notes/https-security.md",
     "backend-learning/03-database/notes/btree-deep-dive.md",
     "backend-learning/03-database/notes/mongodb-guide.md",
     "backend-learning/03-database/notes/normalization.md",
@@ -199,7 +200,6 @@
     "backend-learning/00-internet-basics/notes/domain-names.md",
     "backend-learning/00-internet-basics/notes/dns-guide.md",
     "backend-learning/00-internet-basics/notes/browser-rendering.md",
-    "backend-learning/00-internet-basics/notes/https-security.md",
     "backend-learning/00-internet-basics/code-examples/dns-lookup/nodejs/dns-lookup.js",
     "backend-learning/00-internet-basics/code-examples/dns-lookup/nodejs",
     "backend-learning/00-internet-basics/code-examples/dns-lookup",
