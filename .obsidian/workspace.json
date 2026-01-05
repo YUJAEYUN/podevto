@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "backend-learning/03-database/notes/n-plus-1-query-problem.md",
+                "file": "backend-learning/00-internet-basics/notes/how-internet-works.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "n-plus-1-query-problem"
+              "title": "how-internet-works"
             }
           }
         ]
@@ -181,43 +181,43 @@
       "bases:Create new base": false
     }
   },
-  "active": "c3a593a6a43b90dd",
+  "active": "cf3536effc4d82e0",
   "lastOpenFiles": [
+    "backend-learning/00-internet-basics/code-examples/dns-lookup/nodejs/dns-lookup.js",
+    "backend-learning/00-internet-basics/code-examples/dns-lookup/nodejs",
+    "backend-learning/00-internet-basics/code-examples/dns-lookup",
+    "backend-learning/00-internet-basics/code-examples/http-server/nodejs/server.js",
+    "backend-learning/00-internet-basics/code-examples/http-server/nodejs",
+    "backend-learning/00-internet-basics/code-examples/http-server",
+    "backend-learning/00-internet-basics/code-examples/README.md",
+    "backend-learning/00-internet-basics/notes/hosting-basics.md",
+    "backend-learning/00-internet-basics/notes/https-security.md",
+    "backend-learning/00-internet-basics/notes/browser-rendering.md",
+    "backend-learning/00-internet-basics/notes/domain-names.md",
+    "backend-learning/00-internet-basics/notes/dns-guide.md",
+    "other/면접.md",
+    "backend-learning/00-internet-basics/notes/http-basics.md",
+    "backend-learning/00-internet-basics/notes/how-internet-works.md",
+    "backend-learning/00-internet-basics/README.md",
+    "other/면접_질문모음.md",
+    "other/navercloud_resume.md",
+    "other/Reply.pdf",
+    "other/스마트뉴비의 1년 회고.md",
+    "other/자기소개_베이스문서.md",
+    "other/개발자 방향성 생각.md",
+    "backend-learning/03-database/notes/n-plus-1-query-problem.md",
     "backend-learning/06-web-servers/notes/https-ssl-tls-guide.md",
     "backend-learning/16-mcp-server/notes/mcp-server-implementation.md",
     "backend-learning/16-mcp-server/notes/mcp-fundamentals.md",
     "backend-learning/17-autonomous-cloud/notes/autonomous-cloud-fundamentals.md",
     "backend-learning/17-autonomous-cloud/notes/cloud-infrastructure-basics.md",
-    "other/면접_질문모음.md",
     "backend-learning/17-autonomous-cloud/resources",
     "backend-learning/17-autonomous-cloud/notes",
     "backend-learning/17-autonomous-cloud/code-examples",
     "backend-learning/17-autonomous-cloud",
-    "other/면접.md",
-    "other/개발자 방향성 생각.md",
-    "other/navercloud_resume.md",
     "multimodal-ai-learning/notes/clip-contrastive-learning.md",
     "multimodal-ai-learning/notes/vision-language-models.md",
     "multimodal-ai-learning/notes/vision-transformer.md",
-    "other/스마트뉴비 딥테크 선정 회고.md",
-    "multimodal-ai-learning/code-examples/clip-architecture.md",
-    "multimodal-ai-learning/code-examples/vit-patch-embedding.md",
-    "other/스마트뉴비 입사 2개월 회고.md",
-    "README.md",
-    "multimodal-ai-learning/LEARNING_GUIDE.md",
-    "multimodal-ai-learning/resources/useful-links.md",
-    "multimodal-ai-learning/resources/papers.md",
-    "multimodal-ai-learning/notes/latest-research.md",
-    "other/자기소개_베이스문서.md",
-    "other/Reply.pdf",
-    "other/스마트뉴비의 1년 회고.md",
-    "other/navercloud_resume_v5.md",
-    "other/navercloud_resume_v4.md",
-    "other/navercloud_resume_v3.md",
-    "other/navercloud_",
-    "other/스마트뉴비 딥테크 선정 회고",
-    "other/smartnewbie",
-    "other",
-    "learnlog-mcp/node_modules/zod-to-json-schema/dist-test-v4/types/node_modules/zod/v4/locales/zh-TW.js"
+    "other/스마트뉴비 딥테크 선정 회고.md"
   ]
 }
