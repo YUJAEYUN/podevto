@@ -183,6 +183,7 @@
   },
   "active": "cf3536effc4d82e0",
   "lastOpenFiles": [
+    "backend-learning/03-database/notes/btree-deep-dive.md",
     "backend-learning/03-database/notes/mongodb-guide.md",
     "backend-learning/03-database/notes/normalization.md",
     "backend-learning/03-database/notes/relational-vs-nosql.md",
@@ -215,7 +216,6 @@
     "other/자기소개_베이스문서.md",
     "other/개발자 방향성 생각.md",
     "backend-learning/03-database/notes/n-plus-1-query-problem.md",
-    "backend-learning/06-web-servers/notes/https-ssl-tls-guide.md",
     "backend-learning/17-autonomous-cloud/resources",
     "backend-learning/17-autonomous-cloud/notes",
     "backend-learning/17-autonomous-cloud/code-examples"
