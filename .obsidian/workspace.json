@@ -183,6 +183,15 @@
   },
   "active": "cf3536effc4d82e0",
   "lastOpenFiles": [
+    "backend-learning/03-database/notes/mongodb-guide.md",
+    "backend-learning/03-database/notes/normalization.md",
+    "backend-learning/03-database/notes/relational-vs-nosql.md",
+    "backend-learning/03-database/notes/postgresql-guide.md",
+    "backend-learning/03-database/notes/indexing.md",
+    "backend-learning/03-database/notes/acid-properties.md",
+    "backend-learning/03-database/notes/sql-basics.md",
+    "backend-learning/03-database/notes/database-fundamentals.md",
+    "backend-learning/03-database/README.md",
     "backend-learning/00-internet-basics/notes/http-basics.md",
     "backend-learning/00-internet-basics/notes/how-internet-works.md",
     "backend-learning/00-internet-basics/notes/hosting-basics.md",
@@ -207,16 +216,8 @@
     "other/개발자 방향성 생각.md",
     "backend-learning/03-database/notes/n-plus-1-query-problem.md",
     "backend-learning/06-web-servers/notes/https-ssl-tls-guide.md",
-    "backend-learning/16-mcp-server/notes/mcp-server-implementation.md",
-    "backend-learning/16-mcp-server/notes/mcp-fundamentals.md",
-    "backend-learning/17-autonomous-cloud/notes/autonomous-cloud-fundamentals.md",
-    "backend-learning/17-autonomous-cloud/notes/cloud-infrastructure-basics.md",
     "backend-learning/17-autonomous-cloud/resources",
     "backend-learning/17-autonomous-cloud/notes",
-    "backend-learning/17-autonomous-cloud/code-examples",
-    "multimodal-ai-learning/notes/clip-contrastive-learning.md",
-    "multimodal-ai-learning/notes/vision-language-models.md",
-    "multimodal-ai-learning/notes/vision-transformer.md",
-    "other/스마트뉴비 딥테크 선정 회고.md"
+    "backend-learning/17-autonomous-cloud/code-examples"
   ]
 }
