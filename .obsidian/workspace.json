@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "other/면접.md",
+                "file": "capstone_idea/캡스톤 주제.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "면접"
+              "title": "캡스톤 주제"
             }
           }
         ]
@@ -183,6 +183,24 @@
   },
   "active": "cf3536effc4d82e0",
   "lastOpenFiles": [
+    "capstone_idea/캡스톤_프로젝트_기획서_최종.md",
+    "capstone_idea/기획서.md",
+    "capstone_idea/캡스톤 주제.md",
+    "other/의대공부의 비밀.pdf",
+    "other/메디소드_칼럼집_PDF.pdf",
+    "other/의대_비책_PDF.pdf",
+    "other/navercloud_resume.md",
+    "capstone_idea",
+    "other/면접.md",
+    "other/면접_질문모음.md",
+    "other/개발자 방향성 생각.md",
+    "other/2026년 신년계획 그리고 회고.md",
+    "other/스마트뉴비 딥테크 선정 회고.md",
+    "other/자기소개_베이스문서.md",
+    "other/스마트뉴비 입사 2개월 회고.md",
+    "other/스마트뉴비의 1년 회고.md",
+    "other/Reply.pdf",
+    "backend-learning/00-internet-basics/README.md",
     "backend-learning/00-internet-basics/notes/https-security.md",
     "backend-learning/03-database/notes/btree-deep-dive.md",
     "backend-learning/03-database/notes/mongodb-guide.md",
@@ -196,28 +214,10 @@
     "backend-learning/03-database/README.md",
     "backend-learning/00-internet-basics/notes/http-basics.md",
     "backend-learning/00-internet-basics/notes/how-internet-works.md",
-    "backend-learning/00-internet-basics/notes/hosting-basics.md",
-    "backend-learning/00-internet-basics/notes/domain-names.md",
-    "backend-learning/00-internet-basics/notes/dns-guide.md",
-    "backend-learning/00-internet-basics/notes/browser-rendering.md",
     "backend-learning/00-internet-basics/code-examples/dns-lookup/nodejs/dns-lookup.js",
     "backend-learning/00-internet-basics/code-examples/dns-lookup/nodejs",
     "backend-learning/00-internet-basics/code-examples/dns-lookup",
     "backend-learning/00-internet-basics/code-examples/http-server/nodejs/server.js",
-    "backend-learning/00-internet-basics/code-examples/http-server/nodejs",
-    "backend-learning/00-internet-basics/code-examples/http-server",
-    "backend-learning/00-internet-basics/code-examples/README.md",
-    "other/면접.md",
-    "backend-learning/00-internet-basics/README.md",
-    "other/면접_질문모음.md",
-    "other/navercloud_resume.md",
-    "other/Reply.pdf",
-    "other/스마트뉴비의 1년 회고.md",
-    "other/자기소개_베이스문서.md",
-    "other/개발자 방향성 생각.md",
-    "backend-learning/03-database/notes/n-plus-1-query-problem.md",
-    "backend-learning/17-autonomous-cloud/resources",
-    "backend-learning/17-autonomous-cloud/notes",
-    "backend-learning/17-autonomous-cloud/code-examples"
+    "backend-learning/00-internet-basics/code-examples/http-server/nodejs"
   ]
 }
