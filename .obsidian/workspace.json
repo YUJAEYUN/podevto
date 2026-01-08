@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "other/2026년 신년계획 그리고 회고.md",
+                "file": "capstone_idea/서비스_기획서_발표용.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026년 신년계획 그리고 회고"
+              "title": "서비스_기획서_발표용"
             }
           }
         ]
@@ -183,8 +183,27 @@
   },
   "active": "cf3536effc4d82e0",
   "lastOpenFiles": [
-    "other/개발자 방향성 생각.md",
+    "backend-learning/01-programming-language/notes/pnpm-and-symlinks.md",
+    "capstone_idea/캡스톤_프로젝트_기획서_최종.md",
+    "capstone_idea/서비스_기획서_발표용.md",
     "capstone_idea/캡스톤_프로젝트_기획서_발표용.md",
+    "capstone_idea/캡스톤 주제.md",
+    "capstone_idea/주제별_요약_자료.md",
+    "capstone_idea/기획서.md",
+    "capstone_idea/발표_대본.md",
+    "backend-learning/00-internet-basics/notes/https-security.md",
+    "backend-learning/LEARNING_GUIDE.md",
+    "backend-learning/00-internet-basics/README.md",
+    "backend-learning/00-internet-basics/notes/hosting-basics.md",
+    "backend-learning/00-internet-basics/notes/how-internet-works.md",
+    "backend-learning/00-internet-basics/notes/http-basics.md",
+    "backend-learning/00-internet-basics/notes/browser-rendering.md",
+    "other/2026년 신년계획 그리고 회고.md",
+    "backend-learning/06-web-servers/notes/nestjs-architecture.md",
+    "backend-learning/10-architecture/notes/solid-principles.md",
+    "backend-learning/10-architecture/notes/cqrs-pattern.md",
+    "backend-learning/03-database/notes/orm-and-sql-injection.md",
+    "other/개발자 방향성 생각.md",
     "capstone_idea/meta-log/dist/assets/index-BIvWZ75t.js",
     "capstone_idea/meta-log/dist/assets/index-DwyQ5uE9.css",
     "capstone_idea/meta-log/node_modules/lucide-react/dist/lucide-react.suffixed.d.ts",
@@ -200,26 +219,7 @@
     "capstone_idea/meta-log/node_modules/framer-motion/dom/README.md",
     "capstone_idea/meta-log/node_modules/framer-motion/client/README.md",
     "capstone_idea/meta-log/node_modules/framer-motion/LICENSE.md",
-    "capstone_idea/meta-log/node_modules/tslib/SECURITY.md",
-    "capstone_idea/meta-log/node_modules/tslib/README.md",
-    "capstone_idea/meta-log/node_modules/motion-utils/LICENSE.md",
-    "capstone_idea/meta-log/node_modules/motion-dom/LICENSE.md",
-    "capstone_idea/meta-log/node_modules/@tailwindcss/typography/README.md",
-    "capstone_idea/meta-log/node_modules/postcss-selector-parser/README.md",
-    "capstone_idea/meta-log/node_modules/postcss-selector-parser/CHANGELOG.md",
-    "capstone_idea/meta-log/node_modules/postcss-selector-parser/API.md",
-    "capstone_idea/meta-log/node_modules/util-deprecate/README.md",
-    "capstone_idea/meta-log/node_modules/util-deprecate/History.md",
-    "capstone_idea/meta-log/node_modules/cssesc/README.md",
-    "capstone_idea/meta-log/node_modules/fsevents/README.md",
-    "capstone_idea/meta-log/node_modules/postcss-value-parser/README.md",
-    "capstone_idea/meta-log/node_modules/fraction.js/CHANGELOG.md",
-    "capstone_idea/meta-log/node_modules/fraction.js/README.md",
-    "capstone_idea/meta-log/node_modules/tailwindcss/README.md",
-    "capstone_idea/meta-log/node_modules/autoprefixer/README.md",
     "capstone_idea/meta-log/dist/vite.svg",
-    "capstone_idea/meta-log/node_modules/caniuse-lite/README.md",
-    "capstone_idea/meta-log/node_modules/eslint/README.md",
     "capstone_idea/meta-log/src/assets/react.svg",
     "capstone_idea/meta-log/public/vite.svg"
   ]

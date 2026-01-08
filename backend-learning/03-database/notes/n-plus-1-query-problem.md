@@ -353,4 +353,290 @@ GET /categories?include=items
 
 ---
 
-*마지막 업데이트: 2025-12-21*
+## N+1 문제의 본질
+
+### ⚠️ 중요한 이해
+
+**N+1 문제는 ORM의 문제가 아니라 코드 설계 문제입니다.**
+
+```typescript
+// ❌ Raw SQL에서도 N+1 발생!
+const users = await db.query('SELECT * FROM users');
+
+for (const user of users) {
+  const posts = await db.query('SELECT * FROM posts WHERE user_id = ?', [user.id]);
+  // ↑ 반복문 안에서 쿼리 → N+1 문제!
+  user.posts = posts;
+}
+
+// ❌ ORM에서도 N+1 발생!
+const users = await userRepository.find();
+
+for (const user of users) {
+  user.posts = await postRepository.find({ where: { userId: user.id } });
+  // ↑ 반복문 안에서 쿼리 → N+1 문제!
+}
+```
+
+**핵심:** 반복문 안에서 데이터베이스 쿼리를 실행하는 것이 문제입니다.
+
+### ORM이 N+1을 더 쉽게 만드는 이유
+
+ORM은 쿼리를 감추기 때문에 문제를 발견하기 어렵습니다.
+
+```typescript
+// Raw SQL - 쿼리가 보임 (문제 발견 쉬움)
+for (const user of users) {
+  const posts = await db.query('SELECT * FROM posts WHERE user_id = ?', [user.id]);
+  // ↑ "어? 반복문 안에서 SELECT 하네?" → 눈에 띔
+}
+
+// ORM - 쿼리가 안 보임 (문제 발견 어려움)
+for (const user of users) {
+  user.posts = await user.getPosts();
+  // ↑ 쿼리처럼 안 보여서 모르고 지나침!
+}
+```
+
+---
+
+## 서브쿼리 vs JOIN vs IN 절
+
+### 서브쿼리는 N+1 해결 방법이 아니다
+
+**SELECT 절의 서브쿼리:**
+```sql
+-- 각 게시글마다 서브쿼리 실행 (N+1과 비슷)
+SELECT
+  id,
+  title,
+  (SELECT name FROM users WHERE id = posts.user_id) as author_name
+FROM posts;
+```
+
+- 게시글 10개 → 서브쿼리 10번 실행
+- 네트워크 왕복은 1번이지만, DB 내부에서는 N번 실행
+
+**WHERE 절의 서브쿼리 (IN 절):**
+```sql
+-- 이건 N+1 해결 방법 맞음!
+SELECT * FROM posts
+WHERE user_id IN (SELECT id FROM users WHERE active = true);
+```
+
+### 해결 방법 상세 비교
+
+**1. JOIN (한 번의 쿼리)**
+```typescript
+const result = await db.query(`
+  SELECT users.*, posts.*
+  FROM users
+  LEFT JOIN posts ON posts.user_id = users.id
+`);
+
+// 장점: 쿼리 1번, DB 최적화 가능
+// 단점: 데이터 중복 (사용자가 게시글 수만큼 반복)
+```
+
+**2. IN 절 (쿼리 2번)**
+```typescript
+// 쿼리 1: 사용자 조회
+const users = await db.query('SELECT * FROM users');
+const userIds = users.map(u => u.id);
+
+// 쿼리 2: 게시글 한 번에 조회
+const posts = await db.query(
+  'SELECT * FROM posts WHERE user_id IN (?)',
+  [userIds]
+);
+
+// 메모리에서 그룹화
+const postsMap = posts.reduce((acc, post) => {
+  if (!acc[post.user_id]) acc[post.user_id] = [];
+  acc[post.user_id].push(post);
+  return acc;
+}, {});
+
+users.forEach(user => {
+  user.posts = postsMap[user.id] || [];
+});
+
+// 장점: 데이터 중복 없음, 깔끔한 구조
+// 단점: 쿼리 2번 (네트워크 왕복 2회)
+```
+
+**3. SELECT 절 서브쿼리 (집계만 가능)**
+```sql
+-- 게시글 개수만 필요할 때
+SELECT
+  id,
+  name,
+  (SELECT COUNT(*) FROM posts WHERE user_id = users.id) as post_count
+FROM users;
+
+-- 장점: 결과 깔끔, 집계 값만 필요할 때 적합
+-- 단점: 상세 정보는 못 가져옴, DB 내부에서 N번 실행
+```
+
+### 권장 사항
+
+| 상황 | 추천 방법 | 이유 |
+|------|-----------|------|
+| 1:1 관계 | JOIN | 데이터 중복 적음 |
+| 1:Many (적은 수) | JOIN | 한 번에 처리 |
+| 1:Many (많은 수) | IN 절 (쿼리 2번) | 데이터 중복 방지 |
+| 집계 값만 필요 | 서브쿼리 | COUNT, SUM 등 |
+
+---
+
+## TypeScript/Node.js 예시
+
+### N+1 문제 발생 코드
+
+```typescript
+// ❌ N+1 문제 (최악)
+async function getBlogPosts() {
+  // 쿼리 1번
+  const posts = await db.query('SELECT * FROM posts LIMIT 10');
+
+  // 쿼리 2~11번
+  for (const post of posts) {
+    const author = await db.query(
+      'SELECT name, avatar FROM users WHERE id = ?',
+      [post.user_id]
+    );
+    post.authorName = author.name;
+    post.authorAvatar = author.avatar;
+  }
+
+  return posts;
+}
+// 총 11번 쿼리!
+```
+
+### 해결 방법 1: JOIN
+
+```typescript
+// ✅ JOIN 사용
+async function getBlogPostsWithJoin() {
+  const posts = await db.query(`
+    SELECT
+      posts.*,
+      users.name as author_name,
+      users.avatar as author_avatar
+    FROM posts
+    LEFT JOIN users ON users.id = posts.user_id
+    LIMIT 10
+  `);
+
+  return posts;
+}
+// 쿼리 1번!
+```
+
+### 해결 방법 2: IN 절
+
+```typescript
+// ✅ IN 절 사용 (권장)
+async function getBlogPostsWithIn() {
+  // 쿼리 1: 게시글 조회
+  const posts = await db.query('SELECT * FROM posts LIMIT 10');
+  const userIds = [...new Set(posts.map(p => p.user_id))];
+
+  // 쿼리 2: 작성자들 한 번에 조회
+  const users = await db.query(
+    'SELECT id, name, avatar FROM users WHERE id IN (?)',
+    [userIds]
+  );
+
+  // 메모리에서 매핑
+  const userMap = new Map(users.map(u => [u.id, u]));
+  posts.forEach(post => {
+    const author = userMap.get(post.user_id);
+    post.authorName = author?.name;
+    post.authorAvatar = author?.avatar;
+  });
+
+  return posts;
+}
+// 쿼리 2번!
+```
+
+### TypeORM 예시
+
+```typescript
+// ❌ N+1 발생
+const users = await userRepository.find();
+
+for (const user of users) {
+  user.posts = await postRepository.find({
+    where: { userId: user.id }
+  });
+}
+
+// ✅ relations 사용
+const users = await userRepository.find({
+  relations: ['posts'] // JOIN으로 한 번에 가져옴
+});
+
+// ✅ QueryBuilder 사용
+const users = await userRepository
+  .createQueryBuilder('user')
+  .leftJoinAndSelect('user.posts', 'post')
+  .getMany();
+```
+
+---
+
+## 다른 I/O 작업에서도 동일한 패턴
+
+N+1 문제는 데이터베이스만의 문제가 아닙니다. 반복문 안에서 I/O 작업을 하는 모든 상황에서 발생합니다.
+
+### API 호출에서의 N+1
+
+```typescript
+// ❌ N+1 (API 버전)
+const users = await fetchUsers(); // API 호출 1번
+
+for (const user of users) {
+  user.avatar = await fetchAvatar(user.id); // API 호출 N번
+}
+
+// ✅ 해결
+const users = await fetchUsers();
+const userIds = users.map(u => u.id);
+const avatars = await fetchAvatarsBatch(userIds); // API 호출 1번 (배치)
+```
+
+### 파일 I/O에서의 N+1
+
+```typescript
+// ❌ N+1 (파일 I/O 버전)
+const files = ['a.txt', 'b.txt', 'c.txt'];
+
+for (const file of files) {
+  const content = await fs.readFile(file); // 파일 읽기 N번
+  console.log(content);
+}
+
+// ✅ 해결 (병렬 처리)
+const contents = await Promise.all(
+  files.map(file => fs.readFile(file))
+);
+```
+
+---
+
+## 마무리
+
+**N+1 문제 체크리스트:**
+- [ ] 반복문 안에서 `await db.query()` 실행하는가?
+- [ ] 반복문 안에서 `await repository.find()` 실행하는가?
+- [ ] ORM의 lazy loading을 사용하는가?
+- [ ] 쿼리 로그에서 같은 패턴이 반복되는가?
+
+**하나라도 해당되면 N+1 문제를 의심하세요!**
+
+---
+
+*마지막 업데이트: 2026-01-08*
