@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "backend-learning/12-containerization/notes/isolation-explained.md",
+                "file": "backend-learning/12-containerization/notes/compose-vs-kubernetes.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "isolation-explained"
+              "title": "compose-vs-kubernetes"
             }
           }
         ]
@@ -183,10 +183,13 @@
   },
   "active": "8c3080dc50237710",
   "lastOpenFiles": [
+    "backend-learning/12-containerization/notes/docker-image-deep-dive.md",
+    "backend-learning/12-containerization/notes/compose-vs-kubernetes.md",
     "backend-learning/12-containerization/notes/process-deep-dive.md",
+    "backend-learning/12-containerization/notes/vm-vs-venv-vs-container.md",
+    "backend-learning/12-containerization/notes/docker.md",
     "backend-learning/12-containerization/notes/isolation-explained.md",
     "backend-learning/12-containerization/notes/container-basics.md",
-    "backend-learning/12-containerization/notes/docker.md",
     "other/자기소개_베이스문서.md",
     "other/스마트뉴비의 1년 회고.md",
     "other/스마트뉴비 입사 2개월 회고.md",
@@ -206,10 +209,7 @@
     "backend-learning/00-internet-basics/notes/dns-guide.md",
     "backend-learning/00-internet-basics/notes/browser-rendering.md",
     "capstone_idea/llm 학습 도움 에이전트.md",
-    "capstone_idea/서비스_기획서_발표용.md",
-    "capstone_idea/기획서.md",
     "other/Reply.pdf",
-    "capstone_idea/캡스톤_프로젝트_기획서_최종.md",
     "capstone_idea/meta-log/dist/assets/index-BIvWZ75t.js",
     "capstone_idea/meta-log/dist/assets/index-DwyQ5uE9.css",
     "capstone_idea/meta-log/node_modules/lucide-react/dist/lucide-react.suffixed.d.ts",
