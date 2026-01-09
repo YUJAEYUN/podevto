@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "b9a3cbf533ea2a7b",
+        "id": "26af8b8627fbbbac",
         "type": "tabs",
         "children": [
           {
-            "id": "cf3536effc4d82e0",
+            "id": "8c3080dc50237710",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "capstone_idea/llm 학습 도움 에이전트.md",
+                "file": "backend-learning/12-containerization/notes/isolation-explained.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "llm 학습 도움 에이전트"
+              "title": "isolation-explained"
             }
           }
         ]
@@ -181,35 +181,35 @@
       "bases:Create new base": false
     }
   },
-  "active": "cf3536effc4d82e0",
+  "active": "8c3080dc50237710",
   "lastOpenFiles": [
-    "capstone_idea/기획서.md",
-    "capstone_idea/서비스_기획서_발표용.md",
-    "capstone_idea/llm 학습 도움 에이전트.md",
-    "other/2026년 신년계획 그리고 회고.md",
-    "other/스마트뉴비 입사 2개월 회고.md",
-    "other/스마트뉴비의 1년 회고.md",
-    "other/navercloud_resume.md",
+    "backend-learning/12-containerization/notes/process-deep-dive.md",
+    "backend-learning/12-containerization/notes/isolation-explained.md",
+    "backend-learning/12-containerization/notes/container-basics.md",
+    "backend-learning/12-containerization/notes/docker.md",
     "other/자기소개_베이스문서.md",
-    "other/Reply.pdf",
+    "other/스마트뉴비의 1년 회고.md",
+    "other/스마트뉴비 입사 2개월 회고.md",
+    "other/스마트뉴비 딥테크 선정 회고.md",
+    "other/면접_질문모음.md",
+    "other/면접.md",
+    "other/네이버클라우드 면접 복기.md",
+    "other/2026년 신년계획 그리고 회고.md",
+    "other/개발자 방향성 생각.md",
+    "other/navercloud_resume.md",
     "backend-learning/01-programming-language/notes/pnpm-and-symlinks.md",
-    "capstone_idea/캡스톤_프로젝트_기획서_최종.md",
-    "capstone_idea/캡스톤_프로젝트_기획서_발표용.md",
-    "capstone_idea/캡스톤 주제.md",
-    "capstone_idea/주제별_요약_자료.md",
-    "capstone_idea/발표_대본.md",
     "backend-learning/00-internet-basics/notes/https-security.md",
-    "backend-learning/LEARNING_GUIDE.md",
-    "backend-learning/00-internet-basics/README.md",
     "backend-learning/00-internet-basics/notes/hosting-basics.md",
+    "backend-learning/00-internet-basics/notes/domain-names.md",
     "backend-learning/00-internet-basics/notes/how-internet-works.md",
     "backend-learning/00-internet-basics/notes/http-basics.md",
+    "backend-learning/00-internet-basics/notes/dns-guide.md",
     "backend-learning/00-internet-basics/notes/browser-rendering.md",
-    "backend-learning/06-web-servers/notes/nestjs-architecture.md",
-    "backend-learning/10-architecture/notes/solid-principles.md",
-    "backend-learning/10-architecture/notes/cqrs-pattern.md",
-    "backend-learning/03-database/notes/orm-and-sql-injection.md",
-    "other/개발자 방향성 생각.md",
+    "capstone_idea/llm 학습 도움 에이전트.md",
+    "capstone_idea/서비스_기획서_발표용.md",
+    "capstone_idea/기획서.md",
+    "other/Reply.pdf",
+    "capstone_idea/캡스톤_프로젝트_기획서_최종.md",
     "capstone_idea/meta-log/dist/assets/index-BIvWZ75t.js",
     "capstone_idea/meta-log/dist/assets/index-DwyQ5uE9.css",
     "capstone_idea/meta-log/node_modules/lucide-react/dist/lucide-react.suffixed.d.ts",
