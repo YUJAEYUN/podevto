@@ -1,0 +1,39 @@
+# ==================== Builder Stage ====================
+FROM python:3.11-slim AS builder
+
+WORKDIR /app
+
+# 의존성 설치 (사용자 디렉토리에)
+COPY requirements.txt .
+RUN pip install --no-cache-dir --user -r requirements.txt
+
+# ==================== Runtime Stage ====================
+FROM python:3.11-slim
+
+# 비root 사용자 생성
+RUN useradd -m -u 1001 appuser
+
+WORKDIR /app
+
+# 빌더에서 의존성만 복사
+COPY --from=builder /root/.local /home/appuser/.local
+
+# 소스 복사
+COPY --chown=appuser:appuser app.py .
+
+# PATH 설정
+ENV PATH=/home/appuser/.local/bin:$PATH \
+    FLASK_ENV=production \
+    PORT=5000 \
+    PYTHONUNBUFFERED=1
+
+USER appuser
+
+EXPOSE 5000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:5000/health')" || exit 1
+
+# Gunicorn으로 실행 (프로덕션)
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "4", "--threads", "2", "--timeout", "60", "app:app"]

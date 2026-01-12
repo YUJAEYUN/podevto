@@ -1,0 +1,23 @@
+# ❌ 나쁜 예시 Dockerfile
+# 문제점:
+# 1. Go SDK 전체 포함 (1GB+)
+# 2. 빌드 도구까지 포함
+# 3. 불필요한 파일 많음
+# 4. root 권한으로 실행
+
+FROM golang:1.21
+
+WORKDIR /app
+
+# 모든 파일 복사
+COPY . .
+
+# 빌드
+RUN go build -o main .
+
+EXPOSE 8080
+
+# root로 실행
+CMD ["./main"]
+
+# 결과: 이미지 크기 ~1.0GB ❌

@@ -1,0 +1,36 @@
+# 🚀 최소 이미지 (scratch)
+
+# ==================== Build Stage ====================
+FROM golang:1.21-alpine AS builder
+
+WORKDIR /app
+
+# 의존성 다운로드
+COPY go.mod go.sum* ./
+RUN go mod download
+
+# 소스 복사
+COPY . .
+
+# Static 바이너리 빌드
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build \
+    -a \
+    -installsuffix cgo \
+    -ldflags="-w -s" \
+    -o main .
+
+# ==================== Runtime Stage ====================
+FROM scratch
+
+# CA 인증서만 복사 (HTTPS 통신용)
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+
+# 바이너리만 복사
+COPY --from=builder /app/main /main
+
+EXPOSE 8080
+
+CMD ["/main"]
+
+# 결과: 이미지 크기 ~8MB 🚀 (최소!)
+# 주의: shell이 없어서 exec으로 접속 불가
