@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "backend-learning/01-programming-language/notes/frontend-essentials.md",
+                "file": "backend-learning/12-containerization/notes/compose-vs-kubernetes.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "frontend-essentials"
+              "title": "compose-vs-kubernetes"
             }
           }
         ]
@@ -183,6 +183,9 @@
   },
   "active": "8c3080dc50237710",
   "lastOpenFiles": [
+    "backend-learning/01-programming-language/notes/frontend-essentials.md",
+    "backend-learning/01-programming-language/notes/pnpm-and-symlinks.md",
+    "backend-learning/01-programming-language/code-reading-vocabulary.md",
     "backend-learning/01-programming-language/code-examples/react-todo-app/package-lock.json",
     "backend-learning/01-programming-language/code-examples/react-todo-app/node_modules/caniuse-lite/README.md",
     "backend-learning/01-programming-language/code-examples/react-todo-app/node_modules/caniuse-lite/package.json",
@@ -197,7 +200,6 @@
     "backend-learning/01-programming-language/code-examples/react-todo-app/node_modules/@esbuild/darwin-arm64/bin/esbuild",
     "backend-learning/01-programming-language/code-examples/react-todo-app/node_modules/@esbuild/darwin-arm64/bin",
     "backend-learning/01-programming-language/code-examples/react-todo-app/node_modules/@babel/types/package.json",
-    "backend-learning/01-programming-language/code-examples/react-todo-app/node_modules/@babel/types/lib/validators/react/isReactComponent.js.map",
     "backend-learning/01-programming-language/code-examples/react-todo-app/node_modules/@vitejs/plugin-react/README.md",
     "backend-learning/01-programming-language/code-examples/react-todo-app/node_modules/react-dom/README.md",
     "backend-learning/01-programming-language/code-examples/react-todo-app/node_modules/vite/README.md",
@@ -217,8 +219,6 @@
     "backend-learning/01-programming-language/code-examples/react-todo-app/node_modules/json5/LICENSE.md",
     "backend-learning/01-programming-language/code-examples/react-todo-app/node_modules/baseline-browser-mapping/README.md",
     "backend-learning/01-programming-language/code-examples/react-todo-app/node_modules/react-refresh/README.md",
-    "backend-learning/01-programming-language/code-examples/react-todo-app/node_modules/csstype/README.md",
-    "backend-learning/01-programming-language/code-examples/react-todo-app/node_modules/electron-to-chromium/README.md",
     "capstone_idea/meta-log/dist/vite.svg",
     "capstone_idea/meta-log/src/assets/react.svg",
     "capstone_idea/meta-log/public/vite.svg"
