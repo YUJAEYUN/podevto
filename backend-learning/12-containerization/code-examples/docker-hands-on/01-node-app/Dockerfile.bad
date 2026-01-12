@@ -1,0 +1,21 @@
+# ❌ 나쁜 예시 Dockerfile
+# 문제점:
+# 1. 큰 베이스 이미지 (1GB+)
+# 2. node_modules까지 복사
+# 3. 캐싱 활용 안 됨
+# 4. root 권한으로 실행
+# 5. devDependencies까지 설치
+
+FROM node:18
+
+# 모든 파일 복사 (node_modules 포함!)
+COPY . .
+
+# 의존성 설치 (dev까지 모두)
+RUN npm install
+
+# 포트 노출
+EXPOSE 3000
+
+# root로 실행
+CMD ["npm", "start"]

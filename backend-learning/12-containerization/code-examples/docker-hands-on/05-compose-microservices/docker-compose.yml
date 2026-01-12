@@ -1,0 +1,178 @@
+version: '3.8'
+
+services:
+  # ==================== Nginx Reverse Proxy ====================
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: microservices_nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - api
+      - auth
+      - web
+    networks:
+      - frontend
+      - backend
+    restart: unless-stopped
+
+  # ==================== Web Frontend ====================
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    container_name: microservices_web
+    environment:
+      - REACT_APP_API_URL=http://localhost/api
+      - REACT_APP_AUTH_URL=http://localhost/auth
+    networks:
+      - frontend
+    restart: unless-stopped
+
+  # ==================== API Service ====================
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: microservices_api
+    environment:
+      - NODE_ENV=${NODE_ENV:-development}
+      - PORT=${API_PORT:-3001}
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
+      - AUTH_SERVICE_URL=http://auth:3002
+    depends_on:
+      - postgres
+      - redis
+      - auth
+    networks:
+      - frontend
+      - backend
+    volumes:
+      - ./api:/app
+      - /app/node_modules
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3001/health')"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 40s
+
+  # ==================== Auth Service ====================
+  auth:
+    build:
+      context: ./auth
+      dockerfile: Dockerfile
+    container_name: microservices_auth
+    environment:
+      - NODE_ENV=${NODE_ENV:-development}
+      - PORT=${AUTH_PORT:-3002}
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_EXPIRY=${JWT_EXPIRY:-24h}
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - frontend
+      - backend
+    volumes:
+      - ./auth:/app
+      - /app/node_modules
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3002/health')"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 40s
+
+  # ==================== PostgreSQL Database ====================
+  postgres:
+    image: postgres:15-alpine
+    container_name: microservices_postgres
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres123}
+      - POSTGRES_DB=${POSTGRES_DB:-microservices}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - backend
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ==================== Redis Cache ====================
+  redis:
+    image: redis:7-alpine
+    container_name: microservices_redis
+    command: redis-server --appendonly yes
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - backend
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  # ==================== pgAdmin (Database Management) ====================
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: microservices_pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@example.com
+      - PGADMIN_DEFAULT_PASSWORD=admin123
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    networks:
+      - backend
+    restart: unless-stopped
+
+  # ==================== Redis Commander ====================
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: microservices_redis_commander
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    ports:
+      - "8081:8081"
+    depends_on:
+      - redis
+    networks:
+      - backend
+    restart: unless-stopped
+
+# ==================== Networks ====================
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+
+# ==================== Volumes ====================
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local

@@ -1,0 +1,42 @@
+# ✅ 좋은 예시 Dockerfile
+# 개선사항:
+# 1. alpine 이미지 사용 (경량)
+# 2. 레이어 캐싱 활용
+# 3. 프로덕션 의존성만 설치
+# 4. 비root 사용자
+# 5. Health check 추가
+
+FROM node:18-alpine
+
+# 작업 디렉토리 설정
+WORKDIR /app
+
+# package.json 먼저 복사 (캐싱 활용)
+COPY package*.json ./
+
+# 프로덕션 의존성만 설치
+RUN npm ci --only=production && \
+    npm cache clean --force
+
+# 소스 코드 복사
+COPY server.js ./
+
+# 비root 사용자 생성 및 전환
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S nodejs -u 1001 && \
+    chown -R nodejs:nodejs /app
+
+USER nodejs
+
+# 포트 노출
+EXPOSE 3000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD node -e "require('http').get('http://localhost:3000/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"
+
+# 환경 변수
+ENV NODE_ENV=production
+
+# 앱 실행
+CMD ["node", "server.js"]
