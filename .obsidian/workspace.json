@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "backend-learning/12-containerization/code-examples/docker-hands-on/05-compose-microservices/README.md",
+                "file": "backend-learning/17-autonomous-cloud/notes/autonomous-cloud-fundamentals.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "autonomous-cloud-fundamentals"
             }
           }
         ]
@@ -184,6 +184,8 @@
   "active": "8c3080dc50237710",
   "lastOpenFiles": [
     "backend-learning/17-autonomous-cloud/notes/aws-vpc-networking.md",
+    "backend-learning/17-autonomous-cloud/notes/cloud-infrastructure-basics.md",
+    "backend-learning/12-containerization/code-examples/docker-hands-on/05-compose-microservices/README.md",
     "backend-learning/12-containerization/code-examples/docker-hands-on/README.md",
     "backend-learning/12-containerization/code-examples/docker-hands-on/04-multi-stage/README.md",
     "backend-learning/12-containerization/code-examples/docker-hands-on/03-go-app/README.md",
@@ -209,7 +211,6 @@
     "backend-learning/12-containerization/notes/vm-vs-venv-vs-container.md",
     "backend-learning/12-containerization/notes/kubernetes-complete-guide.md",
     "backend-learning/12-containerization/notes/docker-internals-deep-dive.md",
-    "backend-learning/12-containerization/code-examples/docker-hands-on/05-compose-microservices/README.md",
     "backend-learning/12-containerization/notes/compose-vs-kubernetes.md",
     "backend-learning/01-programming-language/notes/frontend-essentials.md",
     "backend-learning/01-programming-language/notes/pnpm-and-symlinks.md",
@@ -218,7 +219,6 @@
     "backend-learning/01-programming-language/code-examples/react-todo-app/node_modules/@esbuild/darwin-arm64/README.md",
     "backend-learning/01-programming-language/code-examples/react-todo-app/node_modules/typescript/SECURITY.md",
     "backend-learning/01-programming-language/code-examples/react-todo-app/node_modules/typescript/README.md",
-    "backend-learning/01-programming-language/code-examples/react-todo-app/node_modules/@vitejs/plugin-react/README.md",
     "capstone_idea/meta-log/dist/vite.svg",
     "capstone_idea/meta-log/src/assets/react.svg",
     "capstone_idea/meta-log/public/vite.svg"
