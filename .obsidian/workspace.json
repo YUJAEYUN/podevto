@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "backend-learning/12-containerization/code-examples/docker-hands-on/README.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               },
@@ -183,6 +183,17 @@
   },
   "active": "8c3080dc50237710",
   "lastOpenFiles": [
+    "other/personal(회고,생각정리)/신입개발자의 취업준비란.md",
+    "other/personal(회고,생각정리)/인사이트.md",
+    "other/personal(회고,생각정리)/코딩맨.md",
+    "capstone_idea/styles.css",
+    "capstone_idea/index.html",
+    "capstone_idea/assets/uni_chatbot.png",
+    "capstone_idea/assets/mini_docker_k8s.png",
+    "capstone_idea/assets/id_photo_service.png",
+    "capstone_idea/assets",
+    "capstone_idea/캠스톤 아이디어 주제.md",
+    "backend-learning/12-containerization/code-examples/docker-hands-on/README.md",
     "backend-learning/12-containerization/notes/production-best-practices.md",
     "backend-learning/12-containerization/notes/vm-vs-venv-vs-container.md",
     "kubernetes-networking.md",
@@ -204,11 +215,6 @@
     "backend-learning/17-autonomous-cloud/notes/cloud-infrastructure-basics.md",
     "backend-learning/17-autonomous-cloud/notes/aws-private-access-guide.md",
     "other/career(취업,면접,이력서)/로봇회사_웹개발인턴_지원서.md",
-    "backend-learning/16-mcp-server/README.md",
-    "backend-learning/06-web-servers/notes/aws-route-table-guide.md",
-    "backend-learning/17-autonomous-cloud/notes/aws-vpc-endpoint-guide.md",
-    "backend-learning/06-web-servers/notes/aws-private-access-guide.md",
-    "backend-learning/06-web-servers/notes/aws-vpc-endpoint-guide.md",
     "other/career(취업,면접,이력서)/Reply.pdf",
     "other/personal(회고,생각정리)",
     "other/career(취업,면접,이력서)",
@@ -216,9 +222,6 @@
     "other/career(취업,면접,이력서)/면접",
     "other/career(취업/면접/이력서)",
     "other/career(취업/면접",
-    "other/career(취업",
-    "other/personal(회고/생각정리)",
-    "other/personal(회고",
     "capstone_idea/meta-log/dist/vite.svg",
     "capstone_idea/meta-log/src/assets/react.svg",
     "capstone_idea/meta-log/public/vite.svg"
