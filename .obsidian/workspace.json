@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "backend-learning/CORE-CS/01-Database/practice/05-N-Plus-One-Detector.md",
+                "file": "backend-learning/CORE-CS/02-Network/fundamentals/01-OSI-TCPIP-Layers.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "05-N-Plus-One-Detector"
+              "title": "01-OSI-TCPIP-Layers"
             }
           }
         ]
@@ -183,9 +183,19 @@
   },
   "active": "8c3080dc50237710",
   "lastOpenFiles": [
-    "backend-learning/CORE-CS/01-Database/practice/04-Query-Profiler.md",
+    "backend-learning/CORE-CS/02-Network/practice/packet-dissector.c",
+    "backend-learning/CORE-CS/02-Network/practice/packet-analyzer.py",
+    "backend-learning/CORE-CS/02-Network/fundamentals/packet-analyzer.py",
+    "backend-learning/CORE-CS/02-Network/fundamentals/packet-dissector.c",
+    "backend-learning/CORE-CS/02-Network/fundamentals/02-IP-Address-Routing.md",
+    "backend-learning/CORE-CS/02-Network/fundamentals/01-OSI-TCPIP-Layers.md",
+    "backend-learning/CORE-CS/02-Network/README.md",
+    "backend-learning/CORE-CS/01-Database/README.md",
+    "backend-learning/CORE-CS/01-Database/practice/05-N-Plus-One-Detector.md",
     "backend-learning/CORE-CS/01-Database/practice/03-Transaction-Log.md",
+    "backend-learning/CORE-CS/01-Database/practice/04-Query-Profiler.md",
     "backend-learning/CORE-CS/01-Database/practice/02-SQL-Parser.md",
+    "backend-learning/CORE-CS/01-Database/fundamentals/05-SQL-Fundamentals.md",
     "backend-learning/CORE-CS/01-Database/practice/01-Simple-KV-Store.md",
     "backend-learning/CORE-CS/01-Database/fundamentals/01-ACID-Properties.md",
     "backend-learning/CORE-CS/01-Database/deep-dive/08-Partitioning-Sharding.md",
@@ -196,19 +206,12 @@
     "backend-learning/CORE-CS/01-Database/deep-dive/03-Transaction-Isolation.md",
     "backend-learning/CORE-CS/01-Database/deep-dive/02-MVCC.md",
     "backend-learning/CORE-CS/01-Database/deep-dive/01-BTree-BPlusTree.md",
-    "backend-learning/CORE-CS/01-Database/fundamentals/05-SQL-Fundamentals.md",
     "backend-learning/CORE-CS/01-Database/fundamentals/04-Index-Basics.md",
     "backend-learning/CORE-CS/01-Database/fundamentals/03-Transaction-Basics.md",
-    "backend-learning/CORE-CS/02-Network/README.md",
     "backend-learning/CORE-CS/02-Network/practice/05-DNS-Resolver.md",
     "backend-learning/CORE-CS/02-Network/practice/04-Load-Balancer.md",
     "backend-learning/CORE-CS/02-Network/practice/03-Simple-Proxy.md",
     "backend-learning/CORE-CS/02-Network/practice/02-Packet-Analyzer.md",
-    "backend-learning/CORE-CS/02-Network/practice/01-HTTP-Server.md",
-    "backend-learning/CORE-CS/02-Network/deep-dive/08-WebSocket-gRPC.md",
-    "backend-learning/CORE-CS/02-Network/deep-dive/07-Load-Balancing.md",
-    "backend-learning/CORE-CS/02-Network/deep-dive/06-DNS-Deep-Dive.md",
-    "backend-learning/CORE-CS/02-Network/deep-dive/05-HTTPS-TLS.md",
     "resources",
     "fundamentals",
     "other/career(취업,면접,이력서)/Reply.pdf",
@@ -219,9 +222,6 @@
     "capstone_idea/assets/id_photo_service.png",
     "capstone_idea/assets",
     "other/personal(회고,생각정리)",
-    "other/career(취업,면접,이력서)",
-    "other/career(취업,면접,이력서)/면접/이력서)",
-    "other/career(취업,면접,이력서)/면접",
     "capstone_idea/meta-log/dist/vite.svg",
     "capstone_idea/meta-log/src/assets/react.svg",
     "capstone_idea/meta-log/public/vite.svg"
