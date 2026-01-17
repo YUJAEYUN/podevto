@@ -73,11 +73,15 @@ def analyze_packet(packet):
 def main():
     print("패킷 캡처 시작...")
     print("HTTP 요청을 보내면 계층별 헤더를 확인할 수 있습니다.")
-    print("예: curl http://example.com")
+    print("예: 다른 터미널에서 'curl http://example.com' 실행")
     print("\nCtrl+C로 종료\n")
 
     # 포트 80(HTTP) 패킷만 캡처
-    sniff(filter="tcp port 80", prn=analyze_packet, count=5)
+    try:
+        sniff(filter="tcp port 80", prn=analyze_packet, count=5)
+    except PermissionError:
+        print("\n에러: root 권한이 필요합니다!")
+        print("다시 실행: sudo python3 packet-analyzer.py")
 
 if __name__ == "__main__":
     main()

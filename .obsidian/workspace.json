@@ -181,8 +181,9 @@
       "bases:Create new base": false
     }
   },
-  "active": "8c3080dc50237710",
+  "active": "c3a593a6a43b90dd",
   "lastOpenFiles": [
+    "backend-learning/CORE-CS/02-Network/practice/packet-dissector-macos.c",
     "backend-learning/CORE-CS/02-Network/practice/packet-dissector.c",
     "backend-learning/CORE-CS/02-Network/practice/packet-analyzer.py",
     "backend-learning/CORE-CS/02-Network/fundamentals/packet-analyzer.py",
@@ -221,7 +222,6 @@
     "capstone_idea/assets/mini_docker_k8s.png",
     "capstone_idea/assets/id_photo_service.png",
     "capstone_idea/assets",
-    "other/personal(회고,생각정리)",
     "capstone_idea/meta-log/dist/vite.svg",
     "capstone_idea/meta-log/src/assets/react.svg",
     "capstone_idea/meta-log/public/vite.svg"
